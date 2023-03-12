@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Birthdays</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+                <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+                <form action="{{ url_for('index') }}" method="post">
+                    <input type="text" id="bdayName" name="name" size="10" placeholder="Enter your name">
+                    <input type="text" id="bdayIn" name="birthday" size="10" placeholder="Enter your birthday (format: month/day)">
+                    <input type="submit" id="spotButton" value="Submit">
+                </form>
+            </div>
+
+            <div class="section">
+
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday Month</th>
+                            <th>Birthday Day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in entries%}
+                            <tr><th>{{entry.name}}'s birthday is</th> <td>{{entry.month}}</td> <td>{{entry.day}}</td></tr>
+                            <br>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
